@@ -7,16 +7,22 @@ from school_manager.models import Student, Course,Classroom, RegistrationClassro
 admin.site.site_header = 'Painel Administrativo da Escola Contebras'
 
 class CourseAdmin(admin.ModelAdmin):
-  list_display = ('name', 'description')
+  list_display = ('titleCourse','description')
+  list_filter = ('titleCourse', 'description')
+  search_fields = ('titleCourse', 'description')
+  
+class StudentAdmin(admin.ModelAdmin):
+  list_display = ('name', 'studentEmail')
+  list_filter = ('name', 'studentEmail')
+  search_fields = ('name', 'studentEmail')
 
-class StudantAdmin(admin.ModelAdmin):
-  list_display = ('name', 'email')
 
 class ClassroomAdmin(admin.ModelAdmin):
-  list_display = ('name', 'course')
-  filter_horizontal = ('student')
-  
-admin.site.register(Course)
-admin.site.register(Student)
-admin.site.register(Classroom)
-# admin.site.register(RegistrationClassroom)
+  list_display = ('name','course')
+  list_filter = ('name', 'course')
+  search_fields = ('name', 'course')
+
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Student, StudentAdmin)
+admin.site.register(Classroom, ClassroomAdmin)
+admin.site.register(RegistrationClassroom)

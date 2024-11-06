@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 ##Model de Gerenviamento de aluno
 class Student(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Nome")
+    name = models.CharField(max_length=255, verbose_name="Nome do aluno")
     studentEmail = models.EmailField(max_length=100, verbose_name='Email do aluno')
-    curse = models.ManyToManyField('Course', verbose_name='Curso', related_name='student')
+    course = models.ManyToManyField('Course', verbose_name='Curso', related_name='student')
     classroom = models.ManyToManyField('Classroom', verbose_name='Turma', related_name='student')
 
     class Meta:
@@ -31,7 +31,7 @@ class Course(models.Model):
   
 #Model de Gerenciemnto de Turma   
 class Classroom(models.Model):
-    name = models.CharField(max_length=100, default="Nome padrão", verbose_name='Nome')
+    name = models.CharField(max_length=100, default="Nome padrão", verbose_name='Curso')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='classrooms')
     students = models.ManyToManyField(Student, through='RegistrationClassroom', related_name='classrooms')
 
