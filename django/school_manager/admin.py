@@ -22,7 +22,13 @@ class ClassroomAdmin(admin.ModelAdmin):
   list_filter = ('name', 'course')
   search_fields = ('name', 'course')
 
+class RegistrationAdmin(admin.ModelAdmin):
+  list_display = ('student','classroom', 'registration_date')
+  list_filter = ('student', 'classroom', 'registration_date')
+  search_fields = ('student', 'classroom')
+  date_hierarchy= ('registration_date')
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Classroom, ClassroomAdmin)
-admin.site.register(RegistrationClassroom)
+admin.site.register(RegistrationClassroom, RegistrationAdmin)

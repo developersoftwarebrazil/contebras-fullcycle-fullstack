@@ -43,9 +43,9 @@ class Classroom(models.Model):
         return f'Turma {self.name} - {self.course.titleCourse}'
 
 class RegistrationClassroom(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    registration_date = models.DateField(auto_now_add=True)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name="nome do aluno")
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, verbose_name='matriculado na turma')
+    registration_date = models.DateField(auto_now_add=True, verbose_name="Matriculado em")
 
     class Meta:
         verbose_name = "Matrícula"  # Singular

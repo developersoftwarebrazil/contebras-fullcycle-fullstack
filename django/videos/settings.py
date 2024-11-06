@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "school_materials",
     'school_manager',
     'core',
     
@@ -128,6 +129,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Diretório adicional onde o Django buscará arquivos estáticos personalizados
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Pasta onde estão seus arquivos estáticos personalizados
+]
+
+# Diretório onde o Django armazenará arquivos estáticos coletados (para produção)
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
